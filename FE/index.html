@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Trang thai he thong</h1>
+    <div id="msg">Dang ket noi...</div>
+
+    <script>
+        // QUAN TRỌNG: Sau này sẽ thay localhost bằng Public IP của EC2 hoặc DNS của Load Balancer
+        const API_URL = "mylab-alb-1932721310.ap-southeast-1.elb.amazonaws.com"; 
+        
+        fetch(`${API_URL}/status`)
+            .then(res => res.json())
+            .then(data => document.getElementById('msg').innerText = data.message)
+            .catch(err => document.getElementById('msg').innerText = "Lỗi kết nối BE!");
+    </script>
+</body>
+</html>
